@@ -11,18 +11,9 @@ export async function showContacts(req, res) {
 
   if (!contacts) return;
 
-  res
-    .status(200)
-    .set('Content-Type', 'application/json')
-    .send(
-      JSON.stringify(
-        {
-          status: 200,
-          message: 'Successfully found contacts!',
-          data: contacts,
-        },
-        null,
-        2,
-      ),
-    );
+  res.status(200).json({
+    status: 200,
+    message: 'Successfully found contacts!',
+    data: contacts,
+  });
 }
