@@ -21,6 +21,9 @@ export function setupServer() {
   );
   app.get('/contacts', showContacts);
   app.get('/contacts/:contactId', showContactById);
+  app.get('/', (req, res) => {
+    res.send('API is running 🎉');
+  });
 
   app.use((req, res) => {
     res.status(404).json({ message: 'Not found' });
