@@ -1,4 +1,4 @@
-import { ContactsCollection } from '../models/contact.js';
+import { ContactCollection } from '../models/contact.js';
 
 export async function getAllContacts(
   page,
@@ -18,9 +18,9 @@ export async function getAllContacts(
   if (contactType) {
     filter.contactType = contactType;
   }
-  const contactsQuery = ContactsCollection.find(filter);
+  const contactsQuery = ContactCollection.find(filter);
   const [totalItems, data] = await Promise.all([
-    ContactsCollection.countDocuments(filter),
+    ContactCollection.countDocuments(filter),
     contactsQuery
       .sort({ [sortBy]: sortOrder })
       .skip(skip)
@@ -41,7 +41,7 @@ export async function getAllContacts(
 }
 
 export async function getContactById(contactId) {
-  const contactById = await ContactsCollection.findById(contactId);
+  const contactById = await ContactCollection.findById(contactId);
   return contactById;
 }
 
@@ -50,11 +50,11 @@ export function createContact(payload) {
 }
 
 export function updateContact(contactId, payload) {
-  return ContactsCollection.findByIdAndUpdate(contactId, payload, {
+  return ContactCollection.findByIdAndUpdate(contactId, payload, {
     new: true,
   });
 }
 
 export function deleteContact(studentId) {
-  return ContactsCollection.findByIdAndDelete(studentId);
+  return ContactCollection.findByIdAndDelete(studentId);
 }
