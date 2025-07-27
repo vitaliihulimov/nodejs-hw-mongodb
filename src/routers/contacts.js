@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { ctrlWrapper } from '../utils/cntlWrappers.js';
+import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import {
   showContactsController,
   showContactByIdController,
@@ -13,8 +13,11 @@ import { isValidId } from '../middlewares/isValidId.js';
 import { validateBody } from '../middlewares/validateBody.js';
 
 import { contactShema, updateContactShema } from '../validation/contact.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 const router = express.Router();
+
+router.use(authenticate);
 
 router.get('/', ctrlWrapper(showContactsController));
 router.get('/:contactId', isValidId, ctrlWrapper(showContactByIdController));

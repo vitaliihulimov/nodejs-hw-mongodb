@@ -2,7 +2,7 @@ import createHttpError from 'http-errors';
 
 import { parsPaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
-import { parseFilterParams } from '../utils/parseFilterParems.js';
+import { parseFilterParams } from '../utils/parseFilterParams.js';
 
 import {
   createContact,
