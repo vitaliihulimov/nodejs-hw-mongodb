@@ -14,6 +14,7 @@ import { validateBody } from '../middlewares/validateBody.js';
 
 import { contactShema, updateContactShema } from '../validation/contact.js';
 import { authenticate } from '../middlewares/authenticate.js';
+import { upload } from '../middlewares/multer.js';
 
 const router = express.Router();
 
